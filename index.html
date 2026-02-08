@@ -1,62 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine Invitation</title>
-    <style>
-        body { 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            background-color: #fce4ec; 
-            font-family: Arial, sans-serif; 
-            text-align: center; 
-            margin: 0; 
-            overflow: hidden; 
-        }
-        .container { 
-            background: white; 
-            padding: 30px; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
-            width: 85%; 
-            max-width: 400px; 
-        }
-        img { 
-            width: 230px; 
-            height: 230px; 
-            border-radius: 15px; 
-            margin-bottom: 20px; 
-            object-fit: cover; 
-            background-color: #eee; 
-        }
-        .buttons { 
-            display: flex; 
-            justify-content: center; 
-            gap: 15px; 
-            margin-top: 20px; 
-            flex-wrap: wrap; 
-            align-items: center; 
-        }
-        button { 
-            padding: 12px 24px; 
-            font-size: 18px; 
-            border: none; 
-            border-radius: 12px; 
-            cursor: pointer; 
-            transition: 0.2s; 
-            font-weight: bold; 
-        }
-        #yesBtn { background-color: #b39ddb; color: white; }
-        #noBtn { background-color: #f48fb1; color: white; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine Invitation</title>
+<style>
+    body { 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        height: 100vh; 
+        background-color: #fce4ec; 
+        font-family: Arial, sans-serif; 
+        text-align: center; 
+        margin: 0; 
+        overflow: hidden; 
+    }
+    .container { 
+        background: white; 
+        padding: 30px; 
+        border-radius: 20px; 
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+        width: 85%; 
+        max-width: 400px; 
+    }
+    img { 
+        width: 230px; 
+        height: 230px; 
+        border-radius: 15px; 
+        margin-bottom: 20px; 
+        object-fit: cover; 
+        background-color: #eee; 
+    }
+    .buttons { 
+        display: flex; 
+        justify-content: center; 
+        gap: 15px; 
+        margin-top: 20px; 
+        flex-wrap: wrap; 
+        align-items: center; 
+    }
+    button { 
+        padding: 12px 24px; 
+        font-size: 18px; 
+        border: none; 
+        border-radius: 12px; 
+        cursor: pointer; 
+        transition: 0.2s; 
+        font-weight: bold; 
+    }
+    #yesBtn { background-color: #b39ddb; color: white; }
+    #noBtn { background-color: #f48fb1; color: white; }
+</style>
 </head>
 <body>
 
 <div class="container">
-    <img id="catImage" src="https://media.giphy.com/media/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute cat gif">
+    <img id="catImage" src="https://i.imgur.com/3jY9KqF.gif" alt="Cute cat gif">
     <h1 id="questionText">Will you be my valentine?</h1>
     <div class="buttons">
         <button id="yesBtn">YES!</button>
@@ -65,55 +65,57 @@
 </div>
 
 <script>
-    const yesBtn = document.getElementById('yesBtn');
-    const noBtn = document.getElementById('noBtn');
-    const catImage = document.getElementById('catImage');
-    const questionText = document.getElementById('questionText');
-    let noCount = 0;
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const catImage = document.getElementById('catImage');
+const questionText = document.getElementById('questionText');
+let noCount = 0;
 
-    const messages = [
-        "No", 
-        "Are you sure??", 
-        "Really sure???", 
-        "Sige na pls", 
-        "Ayaw mo pa rin ba??", 
-        "Ah ayaw mo talaga?"
-    ];
+// Messages when she keeps saying NO
+const messages = [
+    "No", 
+    "Are you sure??", 
+    "Really sure???", 
+    "Sige na pls", 
+    "Ayaw mo pa rin ba??", 
+    "Ah ayaw mo talaga?"
+];
 
-    const images = [
-        "https://media.giphy.com/media/vP5gX7MtkT9OqKDC2k/giphy.gif",
-        "https://media.giphy.com/media/3o72F8t9TDi2xVnxOE/giphy.gif",
-        "https://media.giphy.com/media/ISOckXUfHLYMk/giphy.gif"
-    ];
+// Stable Imgur GIFs for NO button
+const images = [
+    "https://i.imgur.com/3jY9KqF.gif",  // First NO cat
+    "https://i.imgur.com/8LrjD4g.gif",  // Second NO cat
+    "https://i.imgur.com/2e3f8iR.gif"   // Third NO cat
+];
 
-    // NO button behavior
-    noBtn.addEventListener('click', () => {
-        noCount++;
-        if (noCount < messages.length) {
-            questionText.innerText = messages[noCount];
-        }
-        if (noCount === 1) catImage.src = images[0];
-        if (noCount === 3) catImage.src = images[1];
-        if (noCount >= 5) catImage.src = images[2];
+// NO button behavior
+noBtn.addEventListener('click', () => {
+    noCount++;
+    if (noCount < messages.length) {
+        questionText.innerText = messages[noCount];
+    }
+    if (noCount === 1) catImage.src = images[0];
+    if (noCount === 3) catImage.src = images[1];
+    if (noCount >= 5) catImage.src = images[2];
 
-        // YES button grows
-        const currentFont = parseFloat(window.getComputedStyle(yesBtn).fontSize);
-        const currentPaddingY = parseFloat(window.getComputedStyle(yesBtn).paddingTop);
-        const currentPaddingX = parseFloat(window.getComputedStyle(yesBtn).paddingLeft);
+    // Grow YES button
+    const currentFont = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+    const currentPaddingY = parseFloat(window.getComputedStyle(yesBtn).paddingTop);
+    const currentPaddingX = parseFloat(window.getComputedStyle(yesBtn).paddingLeft);
 
-        yesBtn.style.fontSize = (currentFont * 1.2) + "px";
-        yesBtn.style.paddingTop = (currentPaddingY * 1.2) + "px";
-        yesBtn.style.paddingBottom = (currentPaddingY * 1.2) + "px";
-        yesBtn.style.paddingLeft = (currentPaddingX * 1.2) + "px";
-        yesBtn.style.paddingRight = (currentPaddingX * 1.2) + "px";
-    });
+    yesBtn.style.fontSize = (currentFont * 1.2) + "px";
+    yesBtn.style.paddingTop = (currentPaddingY * 1.2) + "px";
+    yesBtn.style.paddingBottom = (currentPaddingY * 1.2) + "px";
+    yesBtn.style.paddingLeft = (currentPaddingX * 1.2) + "px";
+    yesBtn.style.paddingRight = (currentPaddingX * 1.2) + "px";
+});
 
-    // YES button behavior
-    yesBtn.addEventListener('click', () => {
-        questionText.innerText = "Iloveyousomuch Aonoyuki Angel P Zuñiga ko ❤️";
-        catImage.src = "https://images.unsplash.com/photo-1612197520845-2ff118f23f8c?auto=format&fit=crop&w=500&q=80"; // Green peonies flowers
-        document.querySelector('.buttons').style.display = "none";
-    });
+// YES button behavior
+yesBtn.addEventListener('click', () => {
+    questionText.innerText = "YEY! Iloveyousomuch Aonoyuki Angel P Zuñiga ko ❤️";
+    catImage.src = "https://i.imgur.com/4RkZgB5.jpg"; // Green peonies
+    document.querySelector('.buttons').style.display = "none";
+});
 </script>
 
 </body>
